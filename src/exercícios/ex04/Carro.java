@@ -1,4 +1,4 @@
-package ex04;
+package exercícios.ex04;
 
 import java.time.LocalDate;
 

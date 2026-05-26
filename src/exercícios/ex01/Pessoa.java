@@ -1,4 +1,4 @@
-package ex01;
+package exercícios.ex01;
 
 public class Pessoa {
     String nome;

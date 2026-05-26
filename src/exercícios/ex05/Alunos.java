@@ -1,4 +1,4 @@
-package ex05;
+package exercícios.ex05;
 
 public class Alunos {
     String nome;

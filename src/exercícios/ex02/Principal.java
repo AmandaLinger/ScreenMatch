@@ -1,4 +1,4 @@
-package ex02;
+package exercícios.ex02;
 
 public class Principal {
     public static void main(String[] args) {
