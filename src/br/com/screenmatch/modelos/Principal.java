@@ -1,6 +1,7 @@
 package br.com.screenmatch.modelos;
 
 import br.com.screenmatch.modelos.calculos.CalculadoraDeTempo;
+import br.com.screenmatch.modelos.calculos.FiltroRecomendacao;
 
 public class Principal {
     public static void main(String[] args) {
@@ -40,5 +41,14 @@ public class Principal {
 
         calculadora.inclui(serie1);
         System.out.println("o tempo total é: " + calculadora.getTempoTotal());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(meuFilme);
+
+        Episodio episodio = new Episodio();
+        episodio.setNumero(1);
+        episodio.setSerie(serie1);
+        episodio.setTotalAvaliacoes(300);
+        filtro.filtra(episodio);
     }
 }
