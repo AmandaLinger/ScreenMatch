@@ -3,6 +3,8 @@ package br.com.screenmatch.modelos;
 import br.com.screenmatch.modelos.calculos.CalculadoraDeTempo;
 import br.com.screenmatch.modelos.calculos.FiltroRecomendacao;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme();
@@ -50,5 +52,20 @@ public class Principal {
         episodio.setSerie(serie1);
         episodio.setTotalAvaliacoes(300);
         filtro.filtra(episodio);
+
+        Filme filmeDoPaulo = new Filme();
+        filmeDoPaulo.setNome("Uma noite de crime");
+        filmeDoPaulo.setDuracaoEmMinutos(240);
+        filmeDoPaulo.setAnoDeLancamento(2010);
+        filmeDoPaulo.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();  //usando ArrayList
+        listaDeFilmes.add(filmeDoPaulo);
+        listaDeFilmes.add(outroFilme);
+        listaDeFilmes.add(meuFilme);
+
+        System.out.println("Lista de Filmes: " + listaDeFilmes.size());
+        System.out.println(listaDeFilmes);
+        System.out.println("Primeiro Filmes: " + listaDeFilmes.get(1).getNome().toString()); // pega o elemento com índice 1
     }
 }
