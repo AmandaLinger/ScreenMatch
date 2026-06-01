@@ -27,9 +27,9 @@ public class PrincipalComListas {
         for(Titulo titulo : listaDeAssistidos) { // usando o loop for-each (enquanto tiver "titulo"  na listaDeAssistidos)
             System.out.println(titulo); // ele vai printar na tela o título com a formatação do toString
 
-            Filme filme = (Filme) titulo; // fazendo casting -> convertendo titulo para filme
-
-            System.out.println("Classificação: " + filme.getClassificacao());
+            if(titulo instanceof Filme filme &&  filme.getClassificacao() > 2){
+                System.out.println("Classificação: " + filme.getClassificacao());
+            }
         }
 
         System.out.println(listaDeAssistidos.size());
