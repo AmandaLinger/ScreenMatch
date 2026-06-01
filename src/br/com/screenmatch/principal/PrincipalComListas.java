@@ -4,7 +4,7 @@ import br.com.screenmatch.models.Filme;
 import br.com.screenmatch.models.Serie;
 import br.com.screenmatch.models.Titulo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -32,6 +32,19 @@ public class PrincipalComListas {
             }
         }
 
-        System.out.println(listaDeAssistidos.size());
+       List<String> buscaPorArtistas = new LinkedList<>();
+        buscaPorArtistas.add("Jose Gomes");
+        buscaPorArtistas.add("Joana");
+        buscaPorArtistas.add("Renata Fernandes");
+        buscaPorArtistas.add("Aurora Cunha");
+
+        System.out.println("Lista de artista desordenada: " + buscaPorArtistas);
+        Collections.sort(buscaPorArtistas);
+        System.out.println("Lista de artistas: " + buscaPorArtistas);
+        System.out.println(listaDeAssistidos);
+
+        listaDeAssistidos.sort(Comparator .comparing(Titulo::getAnoDeLancamento)); //ordenando a lista pelo ano de lancamento
+        System.out.println("Ordenando por ano");
+        System.out.println(listaDeAssistidos);;
     }
 }
