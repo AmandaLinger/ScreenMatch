@@ -1,7 +1,10 @@
-package br.com.screenmatch.modelos;
+package br.com.screenmatch.principal;
 
-import br.com.screenmatch.modelos.calculos.CalculadoraDeTempo;
-import br.com.screenmatch.modelos.calculos.FiltroRecomendacao;
+import br.com.screenmatch.models.Episodio;
+import br.com.screenmatch.models.Filme;
+import br.com.screenmatch.models.Serie;
+import br.com.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.screenmatch.calculos.FiltroRecomendacao;
 
 import java.util.ArrayList;
 
@@ -58,6 +61,6 @@ public class Principal {
 
         System.out.println("Lista de Filmes: " + listaDeFilmes.size());
         System.out.println(listaDeFilmes);
-        System.out.println("Primeiro Filmes: " + listaDeFilmes.get(1).getNome().toString()); // pega o elemento com índice 1
+        System.out.println("Primeiro Filme: " + listaDeFilmes.get(1).getNome().toString()); // pega o elemento com índice 1
     }
 }

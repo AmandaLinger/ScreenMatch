@@ -1,4 +1,4 @@
-package br.com.screenmatch.modelos.calculos;
+package br.com.screenmatch.calculos;
 
 public class FiltroRecomendacao {
     public void filtra(Classificavel classificavel) {

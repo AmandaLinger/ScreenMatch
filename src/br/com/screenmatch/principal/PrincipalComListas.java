@@ -1,0 +1,37 @@
+package br.com.screenmatch.principal;
+
+import br.com.screenmatch.models.Filme;
+import br.com.screenmatch.models.Serie;
+import br.com.screenmatch.models.Titulo;
+
+import java.util.ArrayList;
+
+public class PrincipalComListas {
+    public static void main(String[] args) {
+        Filme outroFilme = new Filme("Avatar" , 2012);
+        Filme filmeDoPaulo = new Filme("Uma noite de crime",2010 );
+        Filme meuFilme = new Filme("O poderoso chefão", 1970);
+
+        meuFilme.avalia(10);
+        outroFilme.avalia(5);
+        filmeDoPaulo.avalia(7);
+
+        Serie serie1 = new Serie("AHS" , 2012);
+
+        ArrayList<Titulo> listaDeAssistidos = new ArrayList<>();  //usando ArrayList
+        listaDeAssistidos.add(filmeDoPaulo);
+        listaDeAssistidos.add(outroFilme);
+        listaDeAssistidos.add(meuFilme);
+        listaDeAssistidos.add(serie1);
+
+        for(Titulo titulo : listaDeAssistidos) { // usando o loop for-each (enquanto tiver "titulo"  na listaDeAssistidos)
+            System.out.println(titulo); // ele vai printar na tela o título com a formatação do toString
+
+            Filme filme = (Filme) titulo; // fazendo casting -> convertendo titulo para filme
+
+            System.out.println("Classificação: " + filme.getClassificacao());
+        }
+
+        System.out.println(listaDeAssistidos.size());
+    }
+}

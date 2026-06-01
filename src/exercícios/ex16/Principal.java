@@ -1,7 +1,5 @@
 package exercícios.ex16;
 
-import br.com.screenmatch.modelos.Filme;
-
 import java.util.ArrayList;
 
 public class Principal {

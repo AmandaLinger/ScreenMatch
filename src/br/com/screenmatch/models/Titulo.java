@@ -1,4 +1,4 @@
-package br.com.screenmatch.modelos;
+package br.com.screenmatch.models;
 
 public class Titulo {
     private String nome;
@@ -59,7 +59,7 @@ public class Titulo {
         totalDeAvaliacao ++;
     }
 
-    double calculaMedia(){
+    public double calculaMedia(){
         return somaDasAvaliacoes / totalDeAvaliacao;
     }
 }

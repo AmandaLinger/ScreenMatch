@@ -1,4 +1,4 @@
-package br.com.screenmatch.modelos;
+package br.com.screenmatch.models;
 
 public class Serie extends Titulo{
     private int temporadas;
@@ -45,5 +45,10 @@ public class Serie extends Titulo{
     @Override // o Override possibilita a sobrescrita de um metodo
     public int getDuracaoEmMinutos() {
         return temporadas * episodiosPorTemporada * minutosPorEpisodio;
+    }
+
+    @Override
+    public String toString() {
+        return "Serie: " + this.getNome() + " (" + this.getAnoDeLancamento() + ")";
     }
 }

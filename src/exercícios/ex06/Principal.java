@@ -1,6 +1,6 @@
 package exercícios.ex06;
 
-import br.com.screenmatch.modelos.Filme;
+import br.com.screenmatch.models.Filme;
 
 //iniciando programação orientada a objetos
 public class Principal {
