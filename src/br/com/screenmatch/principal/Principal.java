@@ -54,13 +54,18 @@ public class Principal {
         filmeDoPaulo.setDuracaoEmMinutos(240);
         filmeDoPaulo.avalia(10);
 
+        Filme filmeDaAmanda = new Filme("A culpa é das estrelas", 2018);
+        filmeDaAmanda.setDuracaoEmMinutos(240);
+        filmeDaAmanda.avalia(10);
+
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();  //usando ArrayList
         listaDeFilmes.add(filmeDoPaulo);
         listaDeFilmes.add(outroFilme);
         listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(filmeDaAmanda);
 
         System.out.println("Lista de Filmes: " + listaDeFilmes.size());
+        System.out.println("Primeiro Filme: " + listaDeFilmes.get(0).getNome().toString()); // pega o elemento com índice 1
         System.out.println(listaDeFilmes);
-        System.out.println("Primeiro Filme: " + listaDeFilmes.get(1).getNome().toString()); // pega o elemento com índice 1
     }
 }
