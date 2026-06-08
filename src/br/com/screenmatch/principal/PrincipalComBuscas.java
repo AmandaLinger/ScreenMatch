@@ -13,51 +13,66 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PrincipalComBuscas {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite um filme para busca:");
-        String nomeFilm = leitura.nextLine().replace(" ", "+");
+        String busca = "";
 
-        String endereco = "https://omdbapi.com/?t=" + nomeFilm + "&apikey=4ea549c4";
-        try{
+        List<Titulo> titulos = new ArrayList<>();
 
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(endereco))
-                    .build();
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
-            HttpResponse<String> response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+        while (!busca.equalsIgnoreCase("sair")) { //iniciando um loop até que o usuário digite "sair"
+            System.out.println("Digite um filme para busca:");
+            busca = leitura.nextLine().replace(" ", "+");  //retirando espaços no nome digitado
 
-            System.out.println(response.body());
+            if(busca.equalsIgnoreCase("sair")) { // finaliza o loop
+                break;
+            }
+            String endereco = "https://omdbapi.com/?t=" + busca + "&apikey=4ea549c4";
+            try {
 
-            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(endereco))
+                        .build();
 
-            TituloOmdb tituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
-            System.out.println(tituloOmdb);
+                HttpResponse<String> response = client
+                        .send(request, HttpResponse.BodyHandlers.ofString());
 
-            Titulo meuTitulo = new Titulo(tituloOmdb);
-            System.out.println("Titulo já convertido");
-            System.out.println(meuTitulo);
+                System.out.println(response.body());
 
-            FileWriter escrita = new FileWriter("filmes.txt");
-            escrita.write(meuTitulo.toString());
-            escrita.close();
+                TituloOmdb tituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
+                System.out.println(tituloOmdb);
 
+                Titulo meuTitulo = new Titulo(tituloOmdb);
+                System.out.println("Titulo já convertido");
+                System.out.println(meuTitulo);
 
-        } catch (NumberFormatException e){
-            System.out.println("Aconteceu um erro: ");
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e){
-            System.out.println("Algum erro de argumento na busca, verifique e etente novamente");
-        } catch (ErroDeConversaoDeAnoException e){
-            System.out.println(e.getMessage());
+                titulos.add(meuTitulo); // adiciona no array titulos
+
+            } catch (NumberFormatException e) {
+                System.out.println("Aconteceu um erro: ");
+                System.out.println(e.getMessage()); //mostrando a mensagem de erro
+            } catch (IllegalArgumentException e) {
+                System.out.println("Algum erro de argumento na busca, verifique e etente novamente");
+            } catch (ErroDeConversaoDeAnoException e) {
+                System.out.println(e.getMessage());
+            }
         }
+        System.out.println(titulos);
 
+        FileWriter fw = new FileWriter("filmes.json"); // escreve no arquivo filmes.json
+        fw.write(gson.toJson(titulos)); // transformando um array em json
+        fw.close();
         System.out.println("O programa finalizou corretamente");
     }
 }

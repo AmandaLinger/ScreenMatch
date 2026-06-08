@@ -11,6 +11,7 @@ public class PrincipalComListas {
         Filme outroFilme = new Filme("Avatar" , 2012);
         Filme filmeDoPaulo = new Filme("Uma noite de crime",2010 );
         Filme meuFilme = new Filme("O poderoso chefão", 1970);
+        Filme meuFilme2 = new Filme("Titanic", 1970);
 
         meuFilme.avalia(10);
         outroFilme.avalia(5);
